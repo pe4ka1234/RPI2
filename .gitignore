@@ -2,7 +2,6 @@
 # Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
 ################################################################################
 
-/backend/config.py
 /.vs/RPILab2/FileContentIndex
 /.vs/RPILab2/v17
 /venv
