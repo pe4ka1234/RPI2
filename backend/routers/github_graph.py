@@ -74,7 +74,6 @@ async def get_social_graph(username: str, depth: int = 1):
         else:
             raise HTTPException(status_code=response.status_code, detail=response.json())
 
-    # Стартуем построение графа
     return await fetch_followers(username, 1)
 
 

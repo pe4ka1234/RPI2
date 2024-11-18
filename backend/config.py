@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     URL_PREFIX: str = '/api/v1'
 
     # далее нужно подставить свой токен
-    GITHUB_API_TOKEN: str = "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"
+    GITHUB_API_TOKEN: str = "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"
 
 
 settings = Settings()
