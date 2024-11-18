@@ -3,23 +3,29 @@
 This backend application uses the GitHub API to retrieve information about GitHub users, such as their followers and social graph connections. Follow the steps below to set up and run the project locally.
 
 ##Steps to Set Up the Application Locally
+
     1. Clone the Repository
 Clone this repository to your local machine:
        git clone <repository_url>
        cd <repository_name>
+       
     2. Create and Activate a Virtual Environment
 Create a virtual environment and activate it:
        python -m venv venv
        source venv/bin/activate # On Windows: .\venv\Scripts\activate
+       
     3. Install Dependencies
 Install the required Python packages:
        pip install -r requirements.txt
+       
     4. Set Up Environment Variables
 Create an API token in Git and set it in the config
        GITHUB_API_TOKEN=<your_personal_access_token>
+       
     5. Run the Server
 Start the FastAPI server using the following command
        python -m uvicorn backend.main:app --reload --port 5000
+       
     6. Access the API
 Open your browser, command line or Postman and access the API at http://127.0.0.1:5000.
 
