@@ -1,66 +1,100 @@
-# Мини-лабораторная 2, осень 24
-## О чём лаба?
-Лаба про реализацию backend приложения без базы данных, которое обращается к сторонним сервисам по API с помощью HTTP запросов. Необходимо выбрать и выполнить один из трёх вариантов задания, описанных ниже.
+#GitHub Social Graph Backend
 
-## Первый вариант задания 
-1. Реализовать собственное бэкенд-приложение на любом языке и любом фреймворке, в котором будет использоваться API внешнего сервиса. В приложении должно быть минимум 3 эндпоинта для реализации логики работы сервиса. Наличие БД не обязательно;
-2. Задокументируйте запросы Вашего сервиса в Postman, прикрепите ссылку на workspace в readme.md;
-3. Прописать в readme.md подробную инструкцию по разворачиванию и конфигурации приложения локально. Прописать в readme.md логику работы Вашего приложения. readme.md должен быть написан строго на английском языке.
+This backend application uses the GitHub API to retrieve information about GitHub users, such as their followers and social graph connections. Follow the steps below to set up and run the project locally.
 
-
-## Второй вариант задания
-1. Реализуйте логику построения социального графа для пользователя Github, основываясь на готовом fastAPI;
-2. Задокументируйте запросы Вашего сервиса в Postman, прикрепите ссылку на workspace в readme.md;
-3. Пропишите в readme.md логику изменений, которые Вы внесли в исходное приложение. readme.md должен быть написан строго на английском языке.
-4. Добавьте минимум два собственных endpoint, которые будут участвовать в работе приложения;
-5. Модифицируйте или замените существующий frontend. frontend может быть написан не только на JS. Это может быть, например, скрипт на python, который с помощью HTTP запроса будет обращаться к Вашему backend-приложению и строить визуализацию графа по полученным данным.
-
-
-## Третий вариант задания
-1. Модифицируйте существующее backend-приложение для работы с существующей реализацией frontend;
-Существующая реализация frontend работает со следующими значениями из получаемого от backend ответа:
-- login: имя пользователя
-- followers: список фолловеров пользователя (могут содержать вложенные поля followers)
-- avatar_url: картинка, которую отображать вместо квадратика
-- size: размер иконки (можно модифицировать, основываясь на знаниях о пользователе)
-
-Необходимо получить для каждого followera исходного пользователя всех его follower-ов и добавить их в ответ в соответствющие поля.
-
-Необходимо вычислить значение size для каждого из пользователей(запрашиваемый пользователь, его фолловеры, и все фолловеры фолловеров, ...). Вычислять размер иконки можно на основании его активности в последнее время, количества репозиториев, других параметров.
-
-2. Задокументируйте запросы Вашего сервиса в Postman, прикрепите ссылку на workspace в readme.md;
-
-3. Добавьте минимум два собственных enpoint. Они могут не участвовать в логике frontend приложения, но должны быть задокументированы;
-
-4. Пропишите в readme.md логику изменений, которые Вы внесли в исходное приложение. readme.md должен быть написан строго на английском языке;
-
-## Материалы
-* [Документация GitHub API](https://docs.github.com/en/rest/users/followers) (в коде используется запрос "List followers of a user")
-* [Postman](https://www.postman.com/) (для генерации ссылки нажмите share для желаемого workspace и сгенерируйте JSON-ссылку)
+##Steps to Set Up the Application Locally
+    1. Clone the Repository
+Clone this repository to your local machine:
+       git clone <repository_url>
+       cd <repository_name>
+    2. Create and Activate a Virtual Environment
+Create a virtual environment and activate it:
+       python -m venv venv
+       source venv/bin/activate # On Windows: .\venv\Scripts\activate
+    3. Install Dependencies
+Install the required Python packages:
+       pip install -r requirements.txt
+    4. Set Up Environment Variables
+Create an API token in Git and set it in the config
+       GITHUB_API_TOKEN=<your_personal_access_token>
+    5. Run the Server
+Start the FastAPI server using the following command
+       python -m uvicorn backend.main:app --reload --port 5000
+    6. Access the API
+Open your browser, command line or Postman and access the API at http://127.0.0.1:5000.
 
 
-## Запуск приложений из репозитория
-* Склонируйте репозиторий
-### Backend
-* Создайте и **активируйте** виртуальное окружение для проекта 
-* Пройдите в корень проекта и установите зависимости с помощью команды pip install -r requrements.txt
-* Запустите в окружении main.py (Обратите внмание, что по умолчанию сервер должен подняться по адресу http://localhost:5000/, в противном случае дефолтный фронтенд не сможет найти его)
-### Frontend
-* Пройдите в папку frontend
-* Установите зависимости с помощью команды npm install
-* Запустите web сервер с помощью команды npm run start:dev. Сервер поднимется по адресу: http://localhost:9000/
-
-
-
-### Настройка репозитория
-Сделайте свою копию репозитория. Как это сделать, описано [тут](https://gist.github.com/0xjac/85097472043b697ab57ba1b1c7530274) или [тут](https://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private). Или можно создать чистый репозиторий самостоятельно и залить код туда.
-
-Если создаете приватный репозиторий, ответным письмом будет отправлен логин преподавателя, которого нужно добавить в коллабораторы.
-
-### Отправка задания
-Выполните задания, сохраните изменения, сделайте commit и push в свой репозиторий.
-
-Напишите на почту apicourse@yandex.ru письмо с темой вида MiniLab224 ФИО группа с просьбой проверить работу. В письме должна быть ссылка на репозиторий с выполненной работой, проверяться будет версия, которая лежит в ветке main. В ветке main не должно быть файлов и папок с русскими названиями!
-
-### Дедлайн
-**Дедлайн:** 23:59 18/11/2024 (18 ноября).
+##Application Logic
+Base URL: http://127.0.0.1:5000/api/v1
+1. GET /github/{username}
+    • Purpose: Retrieve the list of followers for a specific GitHub user.
+    • Parameters:
+        ◦ username (string, required): GitHub username.
+    • Logic:
+        ◦ Sends a request to the GitHub API to fetch the followers of the given username.
+        ◦ Returns a list of followers, including their login and avatar URLs.
+    • Example:
+        ◦ Request:
+GET http://127.0.0.1:5000/api/v1/github/pe4ka1234
+        ◦ Response:
+   
+          [
+              {
+                  "login": "follower1",
+                  "avatar_url": "https://avatars.githubusercontent.com/u/12345?v=4"
+              },
+              {
+                  "login": "follower2",
+                  "avatar_url": "https://avatars.githubusercontent.com/u/67890?v=4"
+              }
+          ]
+   
+3. GET /github/social_graph/{username}
+    • Purpose: Build a social graph for a GitHub user up to a specified depth.
+    • Parameters:
+        ◦ username (string, required): GitHub username.
+        ◦ depth (integer, optional, default: 1): Depth of the social graph.
+    • Logic:
+        ◦ Recursively retrieves the followers for the specified user.
+        ◦ Builds a nested graph of followers and their followers up to the defined depth.
+    • Example:
+        ◦ Request:
+GET http://127.0.0.1:5000/api/v1/github/social_graph/pe4ka1234?depth=2
+        ◦ Response:
+   
+          {
+              "login": "pe4ka1234",
+              "followers": [
+                  {
+                      "login": "follower1",
+                      "avatar_url": "https://avatars.githubusercontent.com/u/12345?v=4",
+                      "followers": []
+                  },
+                  {
+                      "login": "follower2",
+                      "avatar_url": "https://avatars.githubusercontent.com/u/67890?v=4",
+                      "followers": [
+                          {
+                              "login": "nested_follower",
+                              "avatar_url": "https://avatars.githubusercontent.com/u/98765?v=4",
+                              "followers": []
+                          }
+                      ]
+                  }
+              ]
+          }
+5. GET /github/hello/{name}
+    • Purpose: A simple health check endpoint to verify server functionality.
+    • Parameters:
+        ◦ name (string, required): Your name.
+    • Logic:
+        ◦ Returns a greeting message.
+    • Example:
+        ◦ Request:
+GET http://127.0.0.1:5000/api/v1/github/hello/John
+        ◦ Response:
+          {
+              "message": "Hello John"
+          }
+## link to the workspace:
+https://sdf333-4106.postman.co/workspace/sdf-Workspace~09359a82-6160-481f-b1d1-daca601dd886/collection/39826827-d9a49929-b947-441e-9168-8837a8176e4b?action=share&creator=39826827
